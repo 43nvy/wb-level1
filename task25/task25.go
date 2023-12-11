@@ -40,7 +40,7 @@ func Task25() {
 	mySleep(seconds)
 	// Выводим сообщение о пробуждении
 	fmt.Println("Time to up: ", time.Now().Format(layoutHHMMSS))
-	for i := 0; i < seconds*2; i++ {
+	for i := 0; i < seconds*3; i++ {
 		fmt.Println("Wake up, Neo")
 	}
 }

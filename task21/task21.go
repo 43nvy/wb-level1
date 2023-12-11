@@ -7,7 +7,7 @@ package task21
 
 import "fmt"
 
-// Создаем пустую структуру dog, для которой сделаем метод
+// Создаем структуру dog, для которой сделаем метод
 type dog struct{}
 
 func (d *dog) woof() {
@@ -18,7 +18,7 @@ func (d *dog) woof() {
 type cat struct{}
 
 // Немного усложним функцию, передавая дополнительный параметр
-// Тем самым, демонстрируем разные функции
+// Тем самым, демонстрируем разные методы
 func (c *cat) meow(ksKs bool) {
 	if ksKs {
 		fmt.Println("Meow-meow")
@@ -32,7 +32,7 @@ type animalAdapter interface {
 	reaction()
 }
 
-// Структура, отличная от dog, и хранящяя в себе ссылку на dog
+// Структура-адаптер, отличная от dog, и хранящяя в себе ссылку на dog
 type dogAdapter struct {
 	*dog
 }
