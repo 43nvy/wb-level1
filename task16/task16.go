@@ -42,11 +42,8 @@ func quickSort(arr []int, low, high int) []int {
 	return arr
 }
 
-func quickSortStart(arr []int) []int {
-	return quickSort(arr, 0, len(arr)-1)
-}
-
 func Task16() {
 	arr := []int{55, 11, 5, 6, 7, 2, 1, 0, 10, 27}
-	fmt.Println("So arr:", quickSortStart(arr))
+	fmt.Printf("Arr: %d\n", arr)
+	fmt.Println("So arr:", quickSort(arr, 0, len(arr)-1))
 }

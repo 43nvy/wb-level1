@@ -45,5 +45,4 @@ func Task6() {
 	fmt.Println("Cancel second gorutine")
 	cancel()
 	// Горутина workCtx не успела завершить свою работу, но мы уже ЕЕ саму завершили.
-	// Даже defer не помог... жалко ее, конечно...
 }

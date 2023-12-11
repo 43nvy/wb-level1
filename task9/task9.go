@@ -11,9 +11,8 @@ import (
 )
 
 // Функция для горутины, которая пишет из слайса в канал
-func arrWriter(arr []int, inputChan chan int, wg *sync.WaitGroup) {
+func arrWriter(arr []int, inputChan chan int) {
 	// Выводим в консоль что горутина закончила работу, затем закрываем канал и сообщаем всей группе ожидания, что одна из горутин завершила работу.
-	defer wg.Done()
 	defer close(inputChan)
 	defer fmt.Println("Gorutine 'arrWriter' end work")
 
@@ -58,13 +57,13 @@ func Task9() {
 	var wg sync.WaitGroup
 	// Вот наш слайс значений
 	numbers := []int{18, 12, 33, 40, 95, 66, 27, 18, 89, 10}
-	// Сообщаем группе ожидания, что у нас появилось 3 горутины и запускаем их
-	wg.Add(1)
-	go arrWriter(numbers, inputChan, &wg)
+	// Сообщаем группе ожидания, что у нас появилось 2 горутины и запускаем их
 	wg.Add(1)
 	go arrDoubler(inputChan, outputChan, &wg)
 	wg.Add(1)
 	go arrReader(outputChan, &wg)
+	// Я сделал запись в канал отдельной функцией, ее выполняет main горутина
+	arrWriter(numbers, inputChan)
 	// Ждем, когда все горутины отметятся, что закончили
 	wg.Wait()
 }
